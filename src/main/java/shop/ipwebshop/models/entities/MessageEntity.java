@@ -2,11 +2,12 @@ package shop.ipwebshop.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import shop.ipwebshop.base.BaseEntity;
 
 @Data
 @Entity
 @Table(name = "message", schema = "web_shop")
-public class MessageEntity {
+public class MessageEntity implements BaseEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")

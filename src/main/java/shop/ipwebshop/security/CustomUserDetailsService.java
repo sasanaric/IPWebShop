@@ -33,6 +33,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     private Collection<GrantedAuthority> mapRoleToAuhtorities(List<String> roles) {
-        return roles.stream().map(role -> new SimpleGrantedAuthority(role)).collect(Collectors.toList());
+        return roles.stream().map(SimpleGrantedAuthority::new).collect(Collectors.toList());
     }
 }

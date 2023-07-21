@@ -2,12 +2,14 @@ package shop.ipwebshop.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import shop.ipwebshop.base.BaseEntity;
+
 import java.sql.Timestamp;
 
 @Data
 @Entity
 @Table(name = "comment", schema = "web_shop")
-public class CommentEntity {
+public class CommentEntity implements BaseEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")

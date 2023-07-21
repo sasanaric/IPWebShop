@@ -19,13 +19,11 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig {
 
-    private JwtAuthEntryPoint authEntryPoint;
-    private CustomUserDetailsService customUserDetailsService;
+    private final JwtAuthEntryPoint authEntryPoint;
 
     @Autowired
-    public SecurityConfig(JwtAuthEntryPoint authEntryPoint, CustomUserDetailsService customUserDetailsService) {
+    public SecurityConfig(JwtAuthEntryPoint authEntryPoint) {
         this.authEntryPoint = authEntryPoint;
-        this.customUserDetailsService = customUserDetailsService;
     }
 
     @Bean
@@ -42,19 +40,14 @@ public class SecurityConfig {
                 .and()
                 .authorizeHttpRequests()
                 .requestMatchers("/api/auth/**").permitAll()
-                .requestMatchers("/messages/**").hasAnyAuthority(SecurityConsts.USER, SecurityConsts.ADMIN)
                 .requestMatchers(HttpMethod.GET,"/users/**").permitAll()
                 .requestMatchers("/users/**").hasAnyAuthority(SecurityConsts.USER, SecurityConsts.ADMIN)
                 .requestMatchers(HttpMethod.GET,"/comments/**").permitAll()
                 .requestMatchers("/comments/**").hasAnyAuthority(SecurityConsts.USER, SecurityConsts.ADMIN)
                 .requestMatchers(HttpMethod.GET,"/photos/**").permitAll()
                 .requestMatchers(HttpMethod.POST,"/photos/**").hasAnyAuthority(SecurityConsts.USER, SecurityConsts.ADMIN)
-                .requestMatchers(HttpMethod.GET,"/posts/**").permitAll()
-                .requestMatchers("/posts/**").hasAnyAuthority(SecurityConsts.USER, SecurityConsts.ADMIN)
-                .requestMatchers(HttpMethod.GET,"users/all-basic-users/**").hasAnyAuthority(SecurityConsts.ADMIN)
-                .requestMatchers("/reports").hasAuthority(SecurityConsts.ADMIN)
-                .requestMatchers("/reports/insert").hasAnyAuthority(SecurityConsts.USER, SecurityConsts.ADMIN)
-                .requestMatchers("/reports/delete/**").hasAuthority(SecurityConsts.ADMIN)
+                .requestMatchers(HttpMethod.GET,"/products/**").permitAll()
+                .requestMatchers("/products/**").hasAnyAuthority(SecurityConsts.USER, SecurityConsts.ADMIN)
                 .and()
                 .httpBasic();
         http.addFilterBefore(jwtAuthenticationFilter(), UsernamePasswordAuthenticationFilter.class);

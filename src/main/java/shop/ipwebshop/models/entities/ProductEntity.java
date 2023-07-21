@@ -3,13 +3,15 @@ package shop.ipwebshop.models.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import shop.ipwebshop.base.BaseEntity;
+
 import java.math.BigDecimal;
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "product", schema = "web_shop")
-public class ProductEntity {
+public class ProductEntity implements BaseEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -32,9 +34,9 @@ public class ProductEntity {
     @Basic
     @Column(name = "deleted")
     private Boolean deleted;
-    @Basic
-    @Column(name = "category_id")
-    private Integer categoryId;
+//    @Basic
+//    @Column(name = "category_id")
+//    private Integer categoryId;
 
     @OneToMany(mappedBy = "product")
     @JsonIgnore

@@ -11,5 +11,5 @@ public class UserRequest {
     private String city;
     private String email;
     private String role;
-//    private Boolean accountConfirmed;
+    private Boolean accountConfirmed=false;
 }

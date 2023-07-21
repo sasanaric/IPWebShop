@@ -3,12 +3,14 @@ package shop.ipwebshop.models.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import shop.ipwebshop.base.BaseEntity;
+
 import java.util.List;
 
 @Data
 @Entity
 @Table(name = "attribute")
-public class AttributeEntity {
+public class AttributeEntity implements BaseEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column(name = "id")
@@ -16,9 +18,9 @@ public class AttributeEntity {
     @Basic
     @Column(name = "name")
     private String name;
-    @Basic
-    @Column(name = "category_id")
-    private Integer categoryId;
+//    @Basic
+//    @Column(name = "category_id")
+//    private Integer categoryId;
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
     private CategoryEntity category;
