@@ -8,18 +8,19 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import shop.ipwebshop.exceptions.NotFoundException;
 import shop.ipwebshop.models.dto.AuthResponse;
+import shop.ipwebshop.models.dto.User;
 import shop.ipwebshop.models.entities.UserEntity;
 import shop.ipwebshop.models.requests.LoginRequest;
 import shop.ipwebshop.models.requests.UserRequest;
 import shop.ipwebshop.repositories.UserEntityRepository;
 import shop.ipwebshop.security.JwtGenerator;
+import shop.ipwebshop.services.EmailService;
 import shop.ipwebshop.services.UserService;
+
+import java.util.Random;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -28,18 +29,18 @@ public class AuthController {
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
     private final JwtGenerator jwtGenerator;
-    private final UserEntityRepository userEntityRepository;
     private final PasswordEncoder passwordEncoder;
-    private ModelMapper modelMapper;
+    private final ModelMapper modelMapper;
+    private final EmailService emailService;
 
     public AuthController(AuthenticationManager authenticationManager, UserService userService, JwtGenerator jwtGenerator,
-                          UserEntityRepository userEntityRepository, PasswordEncoder passwordEncoder, ModelMapper modelMapper) {
+                          PasswordEncoder passwordEncoder, ModelMapper modelMapper, EmailService emailService) {
         this.authenticationManager = authenticationManager;
         this.userService = userService;
         this.jwtGenerator = jwtGenerator;
-        this.userEntityRepository = userEntityRepository;
         this.passwordEncoder = passwordEncoder;
         this.modelMapper = modelMapper;
+        this.emailService = emailService;
     }
 
     @PostMapping("/register")
@@ -63,4 +64,37 @@ public class AuthController {
         System.out.println(authResponse);
         return  new ResponseEntity<>(authResponse,HttpStatus.OK);
     }
+
+    @GetMapping("/send-pin/{username}")
+    public void sendEmail(@PathVariable String username) throws NotFoundException{
+        User user = userService.getUserByUsername(username);
+        Integer userId = user.getId();
+        String pin = emailService.generatePin();
+        String to = user.getEmail();
+        System.out.println(to);
+        String subject = "Potvrda email";
+        String text = "Pin za potvrdu email je "+pin;
+        System.out.println(text);
+        emailService.sendMail("usersnaric@gmail.com",subject,text);
+        String hashedPin = emailService.hashPin(pin);
+        user.setPin(hashedPin);
+        userService.update(userId,user,User.class);
+    }
+
+    @GetMapping("/confirm-pin/{username}/{pin}")
+    public Boolean confirmPin(@PathVariable String username, @PathVariable String pin) throws NotFoundException {
+        User user = userService.getUserByUsername(username);
+        System.out.println(pin);
+        String hashedUserPin = user.getPin();
+        if(emailService.verifyPin(pin,hashedUserPin)){
+            System.out.println("Email potvrdjen");
+            user.setAccountConfirmed(true);
+            userService.update(user.getId(),user,User.class);
+            return true;
+        }else{
+            System.out.println("Email nije potvrdjen");
+            return false;
+        }
+    }
+
 }

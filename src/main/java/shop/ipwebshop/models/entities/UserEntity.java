@@ -39,6 +39,9 @@ public class UserEntity implements BaseEntity<Integer> {
     @Basic
     @Column(name = "account_confirmed")
     private Boolean accountConfirmed;
+    @Basic
+    @Column(name = "pin")
+    private String pin;
 
     @OneToMany(mappedBy = "user")
     @JsonIgnore
@@ -52,4 +55,7 @@ public class UserEntity implements BaseEntity<Integer> {
     @JsonIgnore
     private Collection<ProductEntity> products;
 
+    public String getRole() {
+        return role;
+    }
 }

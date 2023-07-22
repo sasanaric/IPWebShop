@@ -10,7 +10,7 @@ public class Product {
     private String title;
     private String description;
     private BigDecimal price;
-    private String condition;
+    private String state;
     private Boolean sold;
     private Boolean deleted;
     private String categoryName;

@@ -11,5 +11,5 @@ public class UserRequest {
     private String city;
     private String email;
     private String role;
-    private Boolean accountConfirmed=false;
+    private Boolean accountConfirmed = Boolean.FALSE;
 }

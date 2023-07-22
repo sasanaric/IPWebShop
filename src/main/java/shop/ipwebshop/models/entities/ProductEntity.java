@@ -26,17 +26,14 @@ public class ProductEntity implements BaseEntity<Integer> {
     @Column(name = "price")
     private BigDecimal price;
     @Basic
-    @Column(name = "condition")
-    private String condition;
+    @Column(name = "state")
+    private String state;
     @Basic
     @Column(name = "sold")
     private Boolean sold;
     @Basic
     @Column(name = "deleted")
     private Boolean deleted;
-//    @Basic
-//    @Column(name = "category_id")
-//    private Integer categoryId;
 
     @OneToMany(mappedBy = "product")
     @JsonIgnore

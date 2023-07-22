@@ -1,4 +1,4 @@
-package shop.ipwebshop.security;
+package shop.ipwebshop.constants;
 
 public class SecurityConsts {
 

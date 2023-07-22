@@ -4,7 +4,6 @@ import lombok.Data;
 
 @Data
 public class AttributeRequest {
-    private Integer id;
     private String name;
     private Integer categoryId;
 }
