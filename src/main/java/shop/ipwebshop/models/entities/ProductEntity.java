@@ -3,6 +3,8 @@ package shop.ipwebshop.models.entities;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.SQLDelete;
+import org.hibernate.annotations.Where;
 import shop.ipwebshop.base.BaseEntity;
 
 import java.math.BigDecimal;
@@ -11,6 +13,8 @@ import java.util.List;
 @Data
 @Entity
 @Table(name = "product", schema = "web_shop")
+@SQLDelete(sql = "UPDATE product SET deleted = true WHERE id=?")
+@Where(clause = "deleted=false")
 public class ProductEntity implements BaseEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id

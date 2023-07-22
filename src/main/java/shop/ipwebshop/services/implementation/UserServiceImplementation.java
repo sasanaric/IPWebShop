@@ -41,4 +41,5 @@ public class UserServiceImplementation extends CrudJpaService<UserEntity,Integer
         User user = getModelMapper().map(repository.findById(userId).orElseThrow(),User.class);
 
     }
+
 }
