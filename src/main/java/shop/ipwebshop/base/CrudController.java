@@ -2,6 +2,9 @@ package shop.ipwebshop.base;
 
 
 import lombok.Getter;
+import org.aspectj.weaver.ast.Not;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import shop.ipwebshop.exceptions.NotFoundException;
@@ -22,6 +25,11 @@ public abstract class CrudController<ID extends Serializable,REQ,RESP> {
     @GetMapping
     List<RESP> findAll() throws NotFoundException {
         return crudService.findAll((respClass));
+    }
+
+    @GetMapping("/pageable")
+    Page<RESP> findAll(Pageable page) throws NotFoundException{
+        return crudService.findAll(page,respClass);
     }
 
     @GetMapping("/{id}")
