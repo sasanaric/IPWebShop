@@ -2,7 +2,6 @@ package shop.ipwebshop.base;
 
 
 import lombok.Getter;
-import org.aspectj.weaver.ast.Not;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

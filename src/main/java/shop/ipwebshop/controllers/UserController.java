@@ -1,5 +1,6 @@
 package shop.ipwebshop.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import shop.ipwebshop.base.CrudController;
@@ -9,6 +10,7 @@ import shop.ipwebshop.models.requests.UserRequest;
 import shop.ipwebshop.services.UserService;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/users")
 public class UserController extends CrudController<Integer, UserRequest, User> {
     private UserService userService;

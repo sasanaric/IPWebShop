@@ -1,5 +1,6 @@
 package shop.ipwebshop.controllers;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import shop.ipwebshop.base.CrudController;
@@ -9,6 +10,7 @@ import shop.ipwebshop.models.requests.CategoryRequest;
 import shop.ipwebshop.services.CategoryService;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/categories")
 public class CategoryController extends CrudController<Integer, CategoryRequest, Category> {
     private final CategoryService categoryService;

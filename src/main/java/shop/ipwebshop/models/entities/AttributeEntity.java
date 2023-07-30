@@ -18,9 +18,7 @@ public class AttributeEntity implements BaseEntity<Integer> {
     @Basic
     @Column(name = "name")
     private String name;
-//    @Basic
-//    @Column(name = "category_id")
-//    private Integer categoryId;
+
     @ManyToOne
     @JoinColumn(name = "category_id", referencedColumnName = "id", nullable = false)
     private CategoryEntity category;

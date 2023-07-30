@@ -1,0 +1,38 @@
+<div class="container-fluid">
+  <!-- <div class="topnav">
+    <a routerLink="/home">Početna</a>
+    <a routerLink="/user-info">Profil</a>
+    <div class="topnav-right">
+      <a href="#search">Search</a>
+      <a routerLink="/login" (click)="authService.logout()">Odjavi se</a>
+    </div>
+  </div> -->
+  <div class="topnav">
+    <a routerLink="/home">Početna</a>
+    <a *ngIf="authService.isLoggedIn()" routerLink="/user-info">Profil</a>
+    <div class="topnav-right">
+      <a *ngIf="!authService.isLoggedIn(); else logoutBlock" routerLink="/login">Prijavi se</a>
+      <ng-template #logoutBlock>
+        <a routerLink="/login" (click)="authService.logout()">Odjavi se</a>
+      </ng-template>
+    </div>
+</div>
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card bg-dark my-5">
+          <div class="card-body">
+            <h2 class="card-title text-center text-white py-3">{{ title }}</h2>
+            <ul class="text-center list-inline py-3">
+              <li class="list-inline-item">
+                <a routerLink="/categories" class="btn btn-info">Categories</a>
+                  </li>
+              <li class="list-inline-item">
+                <a routerLink="/addcategory" class="btn btn-info">Add Category</a>
+                  </li>
+            </ul>
+          </div>
+        </div>
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>

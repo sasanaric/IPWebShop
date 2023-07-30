@@ -6,5 +6,6 @@ import lombok.Data;
 public class ProductAttribute {
     private Integer productId;
     private Integer attributeId;
+    private String attributeName;
     private String value;
 }

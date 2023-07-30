@@ -1,0 +1,73 @@
+.logout-button {
+    position: absolute;
+    right: 10px;
+    background-color: white;
+    color: black;
+    border-radius: 20px;
+    border: none;
+    padding: 12px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+.logout-button:hover {
+    border: 2px solid black;
+}
+.navbar {
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  .navbar a {
+    float: left;
+    display: block;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+  .navbar a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+  .right-menu {
+    float: right;
+  }
+  .flex-container {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .tabmenu-container {
+    display: flex;
+  }
+  
+  .right-aligned-item {
+    margin-left: auto;
+  }
+  .right-menu {
+    margin-left: auto;
+  }
+  .topnav {
+    background-color: #47006b;
+    overflow: hidden;
+}
+.topnav a {
+  width: 120px;
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+.topnav a:hover {
+  border-radius: 15%;
+  background: #650097;
+}
+.topnav-right {
+  float: right;
+}

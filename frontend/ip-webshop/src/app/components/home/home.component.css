@@ -1,0 +1,23 @@
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+  .container {
+    display: flex; /* Use flexbox layout */
+  }
+  
+  .sidebar {
+    flex: 0 0 120px; /* Don't grow, don't shrink, start at 200px wide */
+    border-right: 1px solid #ddd; /* Add a right border to the sidebar */
+    padding: 20px; /* Add some padding */
+  }
+  
+  .main-content {
+    flex-grow: 1; /* Let the main content area take up the rest of the space */
+    padding: 20px; /* Add some padding */
+  }
+.paginator-bottom {
+  display: flex;
+  justify-content: center;
+}

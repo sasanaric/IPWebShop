@@ -8,6 +8,7 @@ import org.hibernate.annotations.Where;
 import shop.ipwebshop.base.BaseEntity;
 
 import java.math.BigDecimal;
+import java.sql.Timestamp;
 import java.util.List;
 
 @Data
@@ -38,6 +39,9 @@ public class ProductEntity implements BaseEntity<Integer> {
     @Basic
     @Column(name = "deleted")
     private Boolean deleted;
+    @Basic
+    @Column(name = "posted_time")
+    private Timestamp postedTime;
 
     @OneToMany(mappedBy = "product")
     @JsonIgnore

@@ -15,14 +15,13 @@ import shop.ipwebshop.models.dto.User;
 import shop.ipwebshop.models.entities.UserEntity;
 import shop.ipwebshop.models.requests.LoginRequest;
 import shop.ipwebshop.models.requests.UserRequest;
-import shop.ipwebshop.repositories.UserEntityRepository;
 import shop.ipwebshop.security.JwtGenerator;
 import shop.ipwebshop.services.EmailService;
 import shop.ipwebshop.services.UserService;
 
-import java.util.Random;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/api/auth")
 public class AuthController {
 

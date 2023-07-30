@@ -1,0 +1,27 @@
+.product-card {
+    width: 250px;
+    height: 350px;
+    border: 2px solid #343434;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+  }
+  
+  .product-image-container {
+    width: 100%;         /* Specify a width for the image container */
+    height: 200px;        /* Specify a height for the image container */
+    display: flex;        /* Use flexbox layout */
+    justify-content: center; /* Center the image horizontally */
+    align-items: center;  /* Center the image vertically */
+    overflow: hidden;     /* Hide any part of the image that exceeds the container's size */
+  }
+  
+  .product-image {
+    max-width: 100%;
+    max-height: 100%;
+  }
+  
+  .product-info {
+    text-align: center;
+  }

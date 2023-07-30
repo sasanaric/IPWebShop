@@ -10,8 +10,10 @@ import shop.ipwebshop.models.requests.PhotoRequest;
 import shop.ipwebshop.services.PhotoService;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
+@CrossOrigin("http://localhost:4200")
 @RequestMapping("/photos")
 public class PhotoController extends CrudController<Integer, PhotoRequest, Photo> {
     private final PhotoService photoService;
@@ -28,6 +30,23 @@ public class PhotoController extends CrudController<Integer, PhotoRequest, Photo
             return ResponseEntity.ok(photo);
         } else{
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    @GetMapping("/product/{id}")
+    public List<Photo> getPhotosByProductId(@PathVariable Integer id){
+        return photoService.getAllByProductId(id);
+    }
+
+    @GetMapping("/product/{id}/first-photo")
+    public Photo getFirstPhotoByProductId(@PathVariable Integer id){
+        List<Photo> photos = photoService.getAllByProductId(id);
+        if (!photos.isEmpty()) {
+            return photos.get(0);
+        } else {
+            Photo noImage = new Photo();
+            noImage.setPhotoUrl("https://i.ibb.co/VNvhtZJ/Screenshot-2023-07-29-220419.png");
+            return noImage;
         }
     }
 

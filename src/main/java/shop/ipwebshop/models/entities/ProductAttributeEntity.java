@@ -2,24 +2,19 @@ package shop.ipwebshop.models.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import shop.ipwebshop.base.BaseEntity;
 
 @Data
 @Entity
 @Table(name = "product_attribute", schema = "web_shop")
-@IdClass(ProductAttributeEntityPK.class)
-public class ProductAttributeEntity {
+public class ProductAttributeEntity implements BaseEntity<Integer> {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
-    @Column(name = "product_id")
-    private Integer productId;
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Id
-    @Column(name = "attribute_id")
-    private Integer attributeId;
+    @Column(name = "id")
+    private Integer id;
     @Basic
     @Column(name = "value")
     private String value;
-
     @ManyToOne
     @JoinColumn(name = "product_id", referencedColumnName = "id", nullable = false)
     private ProductEntity product;

@@ -6,6 +6,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.http.*;
 import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
+import org.springframework.ui.Model;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
@@ -20,15 +21,18 @@ import shop.ipwebshop.services.PhotoService;
 
 import java.io.IOException;
 import java.util.Base64;
+import java.util.List;
 
 
 @Service
 public class PhotoServiceImplementation extends CrudJpaService<PhotoEntity,Integer> implements PhotoService {
     private final PhotoEntityRepository repository;
+    private final ModelMapper mapper;
 
     public PhotoServiceImplementation(PhotoEntityRepository repository, ModelMapper modelMapper) {
         super(repository, modelMapper, PhotoEntity.class);
         this.repository = repository;
+        this.mapper = modelMapper;
     }
 
     @Override
@@ -66,5 +70,14 @@ public class PhotoServiceImplementation extends CrudJpaService<PhotoEntity,Integ
             // Handle the case where the API request was not successful
             return null;
         }
+    }
+
+    @Override
+    public List<Photo> getAllByProductId(Integer id){
+        return repository
+                .getAllByProductId(id)
+                .stream()
+                .map(m->mapper.map(m,Photo.class))
+                .toList();
     }
 }
