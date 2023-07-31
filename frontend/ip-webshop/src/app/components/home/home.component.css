@@ -4,13 +4,16 @@
     gap: 20px;
   }
   .container {
-    display: flex; /* Use flexbox layout */
+    display: flex; 
+    padding: 0; /* Add this line */
+    margin: 0; /* Add this line */
   }
   
   .sidebar {
-    flex: 0 0 120px; /* Don't grow, don't shrink, start at 200px wide */
+    flex: 0 0 300px; /* Don't grow, don't shrink, start at 120px wide */
     border-right: 1px solid #ddd; /* Add a right border to the sidebar */
-    padding: 20px; /* Add some padding */
+    text-align: center;
+    align-items: center;
   }
   
   .main-content {
@@ -21,3 +24,57 @@
   display: flex;
   justify-content: center;
 }
+.button-page {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #333;
+  font-size: 24px;
+  margin: 0 10px;
+  padding-bottom: 5px;
+}
+.button-page:disabled {
+  color: #ccc;
+}
+select {
+  margin-left: 5px;
+}
+.select-page-size {
+  border-radius: 10%;
+  height: 30px;
+  width: 45px;
+  font-size: 15px;
+}
+:host ::ng-deep .dropdown-selector .p-dropdown {
+  width: 250px !important; 
+  height: 46px !important;
+}
+.price-input {
+  width: 120px; 
+  height: 46px;
+}
+:host ::ng-deep .price-input .p-inputnumber .p-inputnumber-input {
+  width: 120px !important;
+  height: 46px !important;
+}
+.label-dropdown{
+  padding-top: 20px;
+  font-size: 16px;
+}
+.inputs-row {
+  display: flex; /* Arrange the children (input fields) in a row */
+  gap: 10px; /* Optional: Adds some space between the input fields */
+  justify-content: center;
+}
+
+.number-input {
+  height: 46px;
+  width: 120px;
+}
+:host ::ng-deep .refresh-button.p-button {
+  margin-top: 10px;
+  height: 40px;
+  width: 90px;
+}
+
+

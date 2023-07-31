@@ -1,8 +1,73 @@
 <div class="container">
     <div class="sidebar">
       <!-- Add your sidebar content here -->
-      <h2>Sidebar</h2>
-      <p>This is a sidebar.</p>
+      <h2>Filteri</h2>
+      <!-- <p>Kategorija</p> -->
+      <!-- <select [(ngModel)]="selectedCategory">
+        <option *ngFor="let categoy of categories" [value]="categoy.name">{{ categoy.name }}</option>
+      </select> -->
+      <label class="label-dropdown">Sortiraj</label>
+      <div class="dropdown-selector">
+        <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSortOption" (ngModelChange)="updateSort()" optionLabel="name" [showClear]="true" placeholder="Najnovije">
+          <ng-template pTemplate="selectedItem">
+            <div class="flex align-items-center gap-2" *ngIf="selectedSortOption">
+              <div>{{ selectedSortOption.name }}</div>
+            </div>
+          </ng-template>
+          <ng-template let-sortOption pTemplate="item">
+            <div class="flex align-items-center gap-2">
+              <div>{{ sortOption.name }}</div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+
+      <label class="label-dropdown">Kategorija</label>
+      <div class="dropdown-selector">
+        <p-dropdown [options]="categories" [(ngModel)]="selectedCategory" (ngModelChange)="updateCategory()" optionLabel="name"  filterBy="name" [showClear]="true" placeholder=" ">
+          <ng-template pTemplate="selectedItem">
+            <div class="flex align-items-center gap-2" *ngIf="selectedCategory">
+              <div>{{ selectedCategory.name }}</div>
+            </div>
+          </ng-template>
+          <ng-template let-category pTemplate="item">
+            <div class="flex align-items-center gap-2">
+              <div>{{ category.name }}</div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <label class="label-dropdown">Stanje</label>
+      <div class="dropdown-selector">
+        <p-dropdown [options]="states" [(ngModel)]="selectedState" (ngModelChange)="updateState()" filterBy="name" [showClear]="true" placeholder=" ">
+          <ng-template pTemplate="selectedItem">
+            <div class="flex align-items-center gap-2" *ngIf="selectedState">
+              <div>{{ selectedState }}</div>
+            </div>
+          </ng-template>
+          <ng-template let-state pTemplate="item">
+            <div class="flex align-items-center gap-2">
+              <div>{{ state }}</div>
+            </div>
+          </ng-template>
+        </p-dropdown>
+      </div>
+      <div class="input-container">
+        <label class="label-dropdown">Cijena</label>
+        <div class="inputs-row">
+          <div class="price-input">
+            <p-inputNumber inputId="integeronly" [(ngModel)]="priceFrom" (ngModelChange)="priceChanged()" [showClear]="true"> </p-inputNumber>
+          </div>
+          <div class="price-input">
+            <p-inputNumber inputId="integeronly" [(ngModel)]="priceTo" (ngModelChange)="priceChanged()" [showClear]="true"> </p-inputNumber>
+          </div>
+        </div>
+        <p-button styleClass="refresh-button p-button-outlined" *ngIf="showRefresh" (click)="updatePrice()">Osvježi</p-button>
+      </div>
+      
+      
+      
+
     </div>
     <div class="main-content">
       <h1>Dobro dosli!</h1>
@@ -14,18 +79,29 @@
       </div>
       <div class="paginator-bottom">
         <div class="paginator">
-        <button (click)="goToPreviousPage()" [disabled]="filters.page === 0">Prethodna</button>
+          <button class="button-page" (click)="goToFirstPage()" [disabled]="filters.page === 0">
+            <i class="pi pi-angle-double-left"></i>
+          </button>
+          <button class="button-page" (click)="goToPreviousPage()" [disabled]="filters.page === 0">
+            <i class="pi pi-angle-left"></i>
+          </button>
       
-        <span>Page {{ filters.page + 1 }} of {{ totalPages() }}</span>
+          <span style="font-size: 16px;">Stranica {{ filters.page + 1 }} od {{ totalPages() }}</span>
       
-        <button (click)="goToNextPage()" [disabled]="filters.page >= totalPages() - 1">Sljedeća</button>
-        <span>Veličina stranice: </span>
-        <select [(ngModel)]="filters.size" (change)="loadProducts()">
-          <option [value]="16">16</option>
-          <option [value]="24">24</option>
-          <option [value]="40">40</option>
-        </select>
-      </div>
-    </div>  
+          <button class="button-page" (click)="goToNextPage()" [disabled]="filters.page >= totalPages() - 1">
+            <i class="pi pi-angle-right"></i>
+          </button>
+          <button class="button-page" (click)="goToLastPage()" [disabled]="filters.page >= totalPages()-1">
+            <i class="pi pi-angle-double-right"></i>
+          </button>
+          <span style="font-size: 16px;">Veličina stranice: </span>
+          <select class="select-page-size" [(ngModel)]="filters.size" (change)="loadProducts()">
+            <option [value]="4">4</option>
+            <option [value]="16">16</option>
+            <option [value]="24">24</option>
+            <option [value]="40">40</option>
+          </select>
+        </div>
+      </div> 
     </div>
   </div>

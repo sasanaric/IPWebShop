@@ -2,6 +2,9 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { PaginatorModule } from 'primeng/paginator';
+import { DropdownModule } from 'primeng/dropdown';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { ButtonModule } from 'primeng/button';
 
 
 
@@ -10,11 +13,17 @@ import { PaginatorModule } from 'primeng/paginator';
   imports: [
     CommonModule,
     TabMenuModule,
-    PaginatorModule
+    PaginatorModule,
+    DropdownModule,
+    InputNumberModule,
+    ButtonModule
   ],
   exports: [
     TabMenuModule,
-    PaginatorModule
+    PaginatorModule,
+    DropdownModule,
+    InputNumberModule,
+    ButtonModule
   ]
 })
 export class UserInterfaceModule { }

@@ -18,7 +18,17 @@ export class ProductService {
   public findAll(): Observable<Product[]>{
     return this.http.get<Product[]>(this.productsUrl);
   }
-  public getProducts(options: {  page?: number, size?: number,priceFrom?: number, priceTo?: number, categoryName?: string, state?: string, direction?: string, sortBy?: string, search?: string } = {}): Observable<any> {
+  public getProducts(options: {  
+    page: number | null, 
+    size: number | null,
+    priceFrom: number | null, 
+    priceTo: number | null, 
+    categoryName: string | null, 
+    state: string | null, 
+    direction: string | null, 
+    sortBy: string | null, 
+    search: string | null 
+}): Observable<any> {
   
     let queryString = `${this.productsUrl}/filter?page=${options.page || 0}&size=${options.size || 16}`;
     if (options.direction) {
@@ -44,7 +54,8 @@ export class ProductService {
     }
     console.log(queryString);
     return this.http.get<any>(queryString);
-  }
+}
+
   
   
 }
