@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Category } from 'src/app/models/category';
 import { Product } from 'src/app/models/product';
 import { CategoryService } from 'src/app/services/category.service';
@@ -9,7 +9,7 @@ import { ProductService } from 'src/app/services/product.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit{
   products: Product[];
   categories: Category[];
   states: string[];
@@ -59,7 +59,6 @@ export class HomeComponent {
     this.productService.getProducts(this.filters).subscribe(response => {
       this.products = response.content;
       this.totalProducts = response.totalElements;
-      this.filters.page=0; 
     });
   }
   loadCategories(): void {

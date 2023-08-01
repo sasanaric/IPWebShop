@@ -42,4 +42,12 @@
     height: 70px;
     font-weight: 400;
   }
+  .produ
+  :host a {
+    text-decoration: none;
+    color: inherit; 
+  }
   
+  :host a:hover {
+    color: inherit;
+  }

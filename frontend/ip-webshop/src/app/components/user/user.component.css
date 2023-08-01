@@ -1,0 +1,59 @@
+.user-container {
+    display: flex; 
+    padding: 0; /* Add this line */
+    margin: 0; /* Add this line */
+  }
+  
+.user-info{
+    flex: 0 0 325px;
+    border-right: 1px solid #ddd;
+    text-align: center;
+    align-items: center;
+    margin-top: 20px;
+}
+.user-card{
+    display: flex;
+    align-items: center;
+}
+.main-content {
+    flex-grow: 1; /* Let the main content area take up the rest of the space */
+    padding: 20px; /* Add some padding */
+}
+.user-avatar{
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+}
+.user-avatar img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.user-details{
+    margin-top: 30px;
+    text-align: left;
+    font-size: 17px;
+    word-wrap: break-word;
+    word-break: break-all;
+}
+.paginator-bottom {
+    display: flex;
+    justify-content: center;
+  }
+  .button-page {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #333;
+    font-size: 24px;
+    margin: 0 10px;
+    padding-bottom: 5px;
+  }
+  .button-page:disabled {
+    color: #ccc;
+  }
+  .product-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+  }

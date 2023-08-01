@@ -13,6 +13,11 @@ import { LoginComponent } from './auth/login/login.component';
 import { UserInfoComponent } from './components/user-info/user-info.component';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { UserInterfaceModule } from './modules/user-interface/user-interface.module';
+import { ProductComponent } from './components/product/product.component';
+import { ProductService } from './services/product.service';
+import { PhotoService } from './services/photo.service';
+import { UserComponent } from './components/user/user.component';
+import { UserService } from './services/user.service';
 
 @NgModule({
   declarations: [
@@ -22,7 +27,10 @@ import { UserInterfaceModule } from './modules/user-interface/user-interface.mod
     HomeComponent,
     LoginComponent,
     UserInfoComponent,
-    ProductCardComponent
+    ProductCardComponent,
+    ProductComponent,
+    ProductComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
@@ -32,7 +40,10 @@ import { UserInterfaceModule } from './modules/user-interface/user-interface.mod
     NoopAnimationsModule,
     UserInterfaceModule
   ],
-  providers: [CategoryService],
+  providers: [
+    CategoryService,ProductService,
+    PhotoService,UserService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -2,10 +2,6 @@
     <div class="sidebar">
       <!-- Add your sidebar content here -->
       <h2>Filteri</h2>
-      <!-- <p>Kategorija</p> -->
-      <!-- <select [(ngModel)]="selectedCategory">
-        <option *ngFor="let categoy of categories" [value]="categoy.name">{{ categoy.name }}</option>
-      </select> -->
       <label class="label-dropdown">Sortiraj</label>
       <div class="dropdown-selector">
         <p-dropdown [options]="sortOptions" [(ngModel)]="selectedSortOption" (ngModelChange)="updateSort()" optionLabel="name" [showClear]="true" placeholder="Najnovije">

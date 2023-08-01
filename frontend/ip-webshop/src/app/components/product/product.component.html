@@ -1,0 +1,59 @@
+<div *ngIf="product" class="product-container">
+  <div class="product-info">
+    
+    <div class="product-header">
+      <h2>{{ product.title }}</h2>
+      <p class="product-price"><strong>Cijena:</strong> {{ product.price }} KM</p>
+    </div>
+
+    <div class="product-photos">
+      <img *ngIf="productPhotos && productPhotos[currentPhotoIndex]" [src]="productPhotos[currentPhotoIndex].photoUrl" alt="Product photo">
+
+      <button class="button-navigation previous" (click)="previousPhoto()" [disabled]="currentPhotoIndex === 0">
+        <i class="pi pi-arrow-left"></i>
+      </button>
+      <button class="button-navigation next" (click)="nextPhoto()" [disabled]="currentPhotoIndex === productPhotos.length - 1">
+        <i class="pi pi-arrow-right"></i>
+      </button>
+    </div>
+  </div>
+
+  <div class="product-details">
+      <div class="product-attributes">
+        <a [routerLink]="['/user',product.userId]">
+        <div class="user-card">
+          <div class="user-avatar">
+              <img src="{{product.userAvatarUrl}}" alt="User Avatar">
+          </div>
+          <div class="user-name">
+              <h2>{{product.userUsername}}</h2>
+          </div>
+        </div>
+      </a>
+      </div>
+    <div class="product-attributes">
+      <div class="attribute">
+        <p><strong>Stanje:</strong> {{ product.state }}</p>
+      </div>
+      <div class="attribute">
+        <p><strong>Objavljen:</strong> {{ product.postedTime | date }}</p>
+      </div>
+      
+      <div class="attribute" *ngFor="let attribute of productAttributes">
+        <p><strong>{{ attribute.attributeName }}:</strong> {{ attribute.value }}</p>
+      </div>
+      <div class="attribute">
+        <p><strong>Lokacija:</strong> {{ product.userLocation }}</p>
+      </div>
+    </div>
+   
+    <div class="product-description">
+      <p><strong>Opis:</strong>{{ product.description }}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!product">Loading...</div>
+
+
+  

@@ -5,7 +5,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { DropdownModule } from 'primeng/dropdown';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { ButtonModule } from 'primeng/button';
-
+import { TabViewModule } from 'primeng/tabview';
 
 
 @NgModule({
@@ -16,14 +16,16 @@ import { ButtonModule } from 'primeng/button';
     PaginatorModule,
     DropdownModule,
     InputNumberModule,
-    ButtonModule
+    ButtonModule,
+    TabViewModule
   ],
   exports: [
     TabMenuModule,
     PaginatorModule,
     DropdownModule,
     InputNumberModule,
-    ButtonModule
+    ButtonModule,
+    TabViewModule
   ]
 })
 export class UserInterfaceModule { }

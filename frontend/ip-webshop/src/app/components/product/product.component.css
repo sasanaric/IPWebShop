@@ -1,0 +1,138 @@
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .product-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  
+  .product-info {
+    flex: 1;
+    padding-right: 20px; /* Adds some space between the info and photos */
+  }
+  
+  .product-info h2 {
+    color: #333;
+    font-size: 30px; /* Adjust as needed */
+    margin-bottom: 10px;
+  }
+  
+  .product-price {
+    font-size: 24px; /* Adjust as needed */
+    margin-bottom: 20px; /* Adds some space between the price and the photos */
+  }
+  
+  .product-photos {
+    position: relative;
+    width: 100%;
+    height: 500px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f2f2f2; /* Light grey */
+    overflow: hidden;
+  }
+  
+  .product-photos img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* This makes sure that the image maintains its aspect ratio */
+    margin: auto;
+  }
+  .product-details {
+    flex: 1;
+    padding-left: 20px; 
+    margin-top: 80px;
+
+  }
+
+.product-details p {
+    margin: 0 0 10px;
+}
+.product-header{
+  height: 80px;
+}
+.product-details p:last-child {
+    margin-bottom: 0;
+}
+.button-navigation {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .button-navigation:disabled {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: not-allowed;
+  }
+  
+  .button-navigation.previous {
+    left: 10px;
+  }
+  
+  .button-navigation.next {
+    right: 10px;
+  }
+  .product-attributes {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Creates a two column grid */
+    gap: 20px; /* Adds some space between the attribute items */
+  }
+  
+  .attribute {
+    background-color: #e6e6e6;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .product-info, .product-details {
+    flex: 1;
+    padding: 0 20px;
+  }
+  .product-description{
+    margin-top: 20px;
+    background-color: #e6e6e6;
+    padding: 20px;
+    border-radius: 5px;
+  }
+  .user-card{
+    display: flex;
+    align-items: center;
+    background-color: #e6e6e6;
+    margin-bottom: 20px;
+    border-radius: 50px;
+    width: 100%;
+}
+.user-card a {
+  display: inline-block;
+}
+
+.main-content {
+    flex-grow: 1; 
+    padding: 20px;
+}
+.user-avatar{
+    height: 100px;
+    width: 100px;
+    margin-right: 10px;
+}
+.user-avatar img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+:host a {
+  text-decoration: none;
+  color: inherit; 
+}
+
+:host a:hover {
+  color: inherit;
+}

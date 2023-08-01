@@ -1,0 +1,79 @@
+<div class="user-container">
+    <div class="user-info">
+        <div class="user-card">
+            <div class="user-avatar">
+                <img src="{{user.avatarUrl}}" alt="User Avatar">
+            </div>
+            <div class="user-name">
+                <h2>{{user.username}}</h2>
+            </div>
+        </div>
+        <div class="user-details">
+            <p><strong>Ime:</strong> {{user.firstName}}</p>
+            <p><strong>Prezme:</strong> {{user.lastName}}</p>
+            <p><strong>Lokacija:</strong> {{user.city}}</p>
+            <p><strong>Email:</strong> {{user.email}}</p>
+        </div>
+    </div>
+  
+    
+<div class="main-content">
+    <div class="card">
+        <p-tabView>
+            <p-tabPanel header="Aktivni">
+                <div class="product-grid">
+                    <div *ngFor="let product of activeProducts">
+                      <app-product-card [productId]="product.id!"></app-product-card>
+                    </div>
+                </div>
+                <div class="paginator-bottom">
+                    <div class="paginator">
+                      <button class="button-page" (click)="goToFirstPageActive()" [disabled]="activeProductsPage === 0">
+                        <i class="pi pi-angle-double-left"></i>
+                      </button>
+                      <button class="button-page" (click)="goToPreviousPageActive()" [disabled]="activeProductsPage === 0">
+                        <i class="pi pi-angle-left"></i>
+                      </button>
+                  
+                      <span style="font-size: 16px;">Stranica {{ activeProductsPage + 1 }} od {{ totalPagesActive() }}</span>
+                  
+                      <button class="button-page" (click)="goToNextPageActive()" [disabled]="activeProductsPage >= totalPagesActive() - 1">
+                        <i class="pi pi-angle-right"></i>
+                      </button>
+                      <button class="button-page" (click)="goToLastPageActive()" [disabled]="activeProductsPage >= totalPagesActive()-1">
+                        <i class="pi pi-angle-double-right"></i>
+                      </button>
+                    </div>
+                  </div> 
+            </p-tabPanel>
+            <p-tabPanel header="Završeni">
+                <div class="product-grid">
+                    <div *ngFor="let product of soldProducts">
+                      <app-product-card [productId]="product.id!"></app-product-card>
+                    </div>
+                </div>
+                <div class="paginator-bottom">
+                    <div class="paginator">
+                      <button class="button-page" (click)="goToFirstPageSold()" [disabled]="soldProductsPage === 0">
+                        <i class="pi pi-angle-double-left"></i>
+                      </button>
+                      <button class="button-page" (click)="goToPreviousPageActive()" [disabled]="soldProductsPage === 0">
+                        <i class="pi pi-angle-left"></i>
+                      </button>
+                  
+                      <span style="font-size: 16px;">Stranica {{ soldProductsPage + 1 }} od {{ totalPagesActive() }}</span>
+                  
+                      <button class="button-page" (click)="goToNextPageActive()" [disabled]="soldProductsPage >= totalPagesActive() - 1">
+                        <i class="pi pi-angle-right"></i>
+                      </button>
+                      <button class="button-page" (click)="goToLastPageActive()" [disabled]="soldProductsPage >= totalPagesActive()-1">
+                        <i class="pi pi-angle-double-right"></i>
+                      </button>
+                    </div>
+                  </div> 
+            </p-tabPanel>
+        </p-tabView>
+    </div>
+</div>
+  </div>
+  

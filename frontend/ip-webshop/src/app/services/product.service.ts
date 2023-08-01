@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Product } from '../models/product';
+import { ProductAttribute } from '../models/product-attribute';
 
 @Injectable({
   providedIn: 'root'
@@ -9,15 +10,27 @@ import { Product } from '../models/product';
 export class ProductService {
 
   private productsUrl: string;
+  private attributesUrl: string;
   constructor(private http: HttpClient) {
       this.productsUrl='http://localhost:8080/products';
+      this.attributesUrl='http://localhost:8080/product-attribute/product';
   }
-  getProductById(id: number): Observable<Product> {
+  public getProductById(id: number): Observable<Product> {
     return this.http.get<Product>(`${this.productsUrl}/${id}`);
+  }
+  public getProductAttributesById(id:number): Observable<ProductAttribute[]>{
+    return this.http.get<ProductAttribute[]>(`${this.attributesUrl}/${id}`);
+  }
+  public getActiveProductsByUserId(page:number, id: number): Observable<any> {
+    return this.http.get<any>(`${this.productsUrl}/user/${id}/active?page=${page}`);
+  }
+  public getSoldProductsByUserId(page: number, id: number): Observable<any> {
+    return this.http.get<any>(`${this.productsUrl}/user/${id}/sold?page=${page}`);
   }
   public findAll(): Observable<Product[]>{
     return this.http.get<Product[]>(this.productsUrl);
   }
+
   public getProducts(options: {  
     page: number | null, 
     size: number | null,

@@ -6,6 +6,8 @@ import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { AuthGuard } from './auth/auth.guard';
 import { UserInfoComponent } from './components/user-info/user-info.component';
+import { ProductComponent } from './components/product/product.component';
+import { UserComponent } from './components/user/user.component';
 
 const routes: Routes = [
   { 
@@ -25,6 +27,12 @@ const routes: Routes = [
   },
   {
     path: 'addcategory',component: CategoryFormComponent
+  },
+  {
+    path: 'product/:id', component: ProductComponent
+  },
+  {
+    path: 'user/:id', component: UserComponent
   }
 ];
 

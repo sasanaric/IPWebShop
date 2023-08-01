@@ -1,15 +1,17 @@
-<div class="product-card" *ngIf="product">
-  <div class="product-image-container">
-    <img [src]="productPhoto.photoUrl" alt="{{product.title}}" class="product-image">
-    <div class="product-state">{{product.state}}</div>
-  </div>
-  <div class="product-info">
-    <!-- <h2>{{product.title}}</h2> -->
-    <h2 class="product-title">{{product.title}}</h2>
-    <!-- <div style="display: flex; justify-content: space-between;"> -->
-      <div>
-      <!-- <h4>{{product.state}}</h4> -->
-      <h4 style="font-weight: bold;">{{product.price}} KM</h4>
+<a [routerLink]="['/product',productId]">
+  <div class="product-card" *ngIf="product">
+    <div class="product-image-container">
+      <img [src]="productPhoto.photoUrl" alt="{{product.title}}" class="product-image">
+      <div class="product-state">{{product.state}}</div>
+    </div>
+    <div class="product-info">
+      <!-- <h2>{{product.title}}</h2> -->
+      <h2 class="product-title">{{product.title}}</h2>
+      <!-- <div style="display: flex; justify-content: space-between;"> -->
+        <div>
+        <!-- <h4>{{product.state}}</h4> -->
+        <h4 style="font-weight: bold;">{{product.price}} KM</h4>
+      </div>
     </div>
   </div>
-</div>
+</a>
