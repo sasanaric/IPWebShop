@@ -28,8 +28,8 @@ public class UserEntity implements BaseEntity<Integer> {
     @Column(name = "password")
     private String password;
     @Basic
-    @Column(name = "city")
-    private String city;
+    @Column(name = "location")
+    private String location;
     @Basic
     @Column(name = "email")
     private String email;
@@ -55,6 +55,9 @@ public class UserEntity implements BaseEntity<Integer> {
     @JsonIgnore
     private Collection<ProductEntity> products;
 
+    @ManyToOne
+    @JoinColumn(name = "avatar_id", referencedColumnName = "id", nullable = false)
+    private AvatarEntity avatar;
     public String getRole() {
         return role;
     }

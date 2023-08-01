@@ -18,5 +18,6 @@ public class Product {
     private String categoryName;
     private Integer userId;
     private String userUsername;
-
+    private String userAvatarUrl;
+    private String userLocation;
 }

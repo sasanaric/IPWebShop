@@ -19,4 +19,7 @@ public interface ProductService extends CrudService<Integer> {
             String state,
             Pageable pageable,
             String search);
+
+    Page<Product> getActiveProductsByUserId(Pageable pageable, Integer id);
+    Page<Product> getSoldProductsByUserId(Pageable pageable, Integer id);
 }

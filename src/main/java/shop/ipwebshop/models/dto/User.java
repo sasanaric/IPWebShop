@@ -9,9 +9,10 @@ public class User {
     private String lastName;
     private String username;
     private String password;
-    private String city;
+    private String location;
     private String email;
     private String role;
     private Boolean accountConfirmed;
     private String pin;
+    private String avatarUrl;
 }

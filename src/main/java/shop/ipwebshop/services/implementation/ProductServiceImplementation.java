@@ -43,4 +43,16 @@ public class ProductServiceImplementation extends CrudJpaService<ProductEntity,I
         Page<ProductEntity> productEntitiesPage = repository.filteredProducts(priceFrom, priceTo, categoryName, state, pageable, search);
         return productEntitiesPage.map(entity -> modelMapper.map(entity, Product.class));
     }
+
+    @Override
+    public Page<Product> getActiveProductsByUserId(Pageable pageable, Integer id) {
+        Page<ProductEntity> productEntitiesPage = repository.getProductEntityByUserIdAndSoldIsFalse(pageable,id);
+        return productEntitiesPage.map(entity -> modelMapper.map(entity,Product.class));
+    }
+
+    @Override
+    public Page<Product> getSoldProductsByUserId(Pageable pageable, Integer id) {
+        Page<ProductEntity> productEntitiesPage = repository.getProductEntityByUserIdAndSoldIsTrue(pageable, id);
+        return productEntitiesPage.map(entity -> modelMapper.map(entity,Product.class));
+    }
 }

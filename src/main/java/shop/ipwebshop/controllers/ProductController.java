@@ -55,6 +55,16 @@ public class ProductController extends CrudController<Integer, ProductRequest, P
                 search
         );
     }
+    @GetMapping("/user/{id}/active")
+    public Page<Product> getActiveUserProducts(@RequestParam int page, @PathVariable Integer id){
+        Pageable pageable = PageRequest.of(page,16);
+        return productService.getActiveProductsByUserId(pageable,id);
+    }
+    @GetMapping("/user/{id}/sold")
+    public Page<Product> getSoldUserProducts(@RequestParam int page, @PathVariable Integer id){
+        Pageable pageable = PageRequest.of(page,16);
+        return productService.getSoldProductsByUserId(pageable,id);
+    }
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Product insert (@RequestBody ProductRequest productRequest) throws NotFoundException{
@@ -63,8 +73,10 @@ public class ProductController extends CrudController<Integer, ProductRequest, P
         return productService.insert(productRequest,Product.class);
     }
 
-    @GetMapping("/buy/{id}")
+    @PostMapping("/buy/{id}")
     public Product buyProduct(@PathVariable Integer id) throws NotFoundException {
         return productService.buyProduct(id);
     }
+
+
 }
